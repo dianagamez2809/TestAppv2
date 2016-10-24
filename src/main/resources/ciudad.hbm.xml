@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+
+
+<!DOCTYPE hibernate-mapping PUBLIC 
+"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+    <class name="com.diana.model.Ciudad" table="CIUDAD">
+        <id name="id" type="int" column="ID_CIUDAD">
+        </id>
+        <property name="nombreCiudad">
+            <column name="NOMBRE_CIUDAD" />
+        </property>
+        <property name="idPais">
+            <column name="ID_PAIS" />
+        </property>
+        <property name="valorCiudad">
+            <column name="VALOR_CIUDAD" />
+        </property>
+    </class>
+</hibernate-mapping>
