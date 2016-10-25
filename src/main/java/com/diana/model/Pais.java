@@ -5,57 +5,79 @@
  */
 package com.diana.model;
 
+import java.io.Serializable;
+import java.util.HashSet;
+import java.util.Set;
+
 /**
  *
  * @author diana
  */
-public class Pais {
+public class Pais implements Serializable {
 	
-    private Integer ID_PAIS;
-    private String NOMBRE_PAIS;
-    private String CODIGO_PAIS;
-    private int VALOR_PAIS;
-	
+    private Integer id;
+    private String nombrePais;
+    private String codigoPais;
+    private int valorPais;
+	private Set<Ciudad> ciudades = new HashSet<Ciudad>(0);
     
+	public Pais() {
+	}
 
+	public Pais(String nombrePais, String codigoPais, int valorPais) {
+		this.nombrePais = nombrePais;
+		this.codigoPais = codigoPais;
+		this.valorPais = valorPais;
+	}
+
+	public Pais(String nombrePais, String codigoPais, int valorPais,
+			Set<Ciudad> ciudades) {
+		this.nombrePais = nombrePais;
+		this.codigoPais = codigoPais;
+		this.valorPais = valorPais;
+		this.ciudades = ciudades;
+	}
+	
     public Integer getId() {
-            return ID_PAIS;
+            return id;
     }
 
-    public void setId(Integer ID_PAIS) {
-            this.ID_PAIS = ID_PAIS;
+    public void setId(Integer id) {
+            this.id = id;
     }
 
-    public String getNombre() {
-            return NOMBRE_PAIS;
+    public String getNombrePais() {
+            return nombrePais;
     }
 
-    public void setNombre(String NOMBRE_PAIS) {
-            this.NOMBRE_PAIS = NOMBRE_PAIS;
+    public void setNombrePais(String nombrePais) {
+            this.nombrePais = nombrePais;
     }
     
-    public String getCodigo() {
-            return CODIGO_PAIS;
+    public String getCodigoPais() {
+            return codigoPais;
     }
 
-    public void setCodigo(String CODIGO_PAIS) {
-            this.CODIGO_PAIS = CODIGO_PAIS;
+    public void setCodigoPais(String codigoPais) {
+            this.codigoPais = codigoPais;
     }
     
-    public int getValor(){
-        return VALOR_PAIS;
+    public int getValorPais(){
+        return valorPais;
     }
     
-    public void setValor(int VALOR_PAIS){
-        this.VALOR_PAIS = VALOR_PAIS;
+    public void setValorPais(int valorPais){
+        this.valorPais = valorPais;
+    }
+    
+    public Set<Ciudad> getCiudades(){
+    	return this.ciudades;
+    }
+    
+    public void setCiudades(Set<Ciudad> ciudades){
+    	this.ciudades = ciudades;
     }
 
-    @Override
-    public String toString(){
-        return "Pais [ID_PAIS=" + ID_PAIS + 
-                ", NOMBRE_PAIS =" + NOMBRE_PAIS +
-                ", CODIGO_PAIS =" + CODIGO_PAIS +
-                ", VALOR_PAIS =" + VALOR_PAIS + "]";
-    }
+    
 }
 

@@ -6,9 +6,15 @@
 package com.diana.dao;
 
 import com.diana.model.Ciudad;
+import com.diana.model.Pais;
 import com.diana.util.HibernateUtil;
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
+
+import org.hibernate.HibernateException;
+import org.hibernate.Query;
+
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 
@@ -17,13 +23,13 @@ import org.hibernate.Transaction;
  * @author diana
  */
 public class CiudadDAO {
-    public List<Ciudad> getAllCiudades() {
+    /*public List<Ciudad> getAllCiudades() {
         List<Ciudad> ciudades = new ArrayList<Ciudad>();
         Transaction trns = null;
         Session session = HibernateUtil.getSessionFactory().openSession();
         try {
             trns = session.beginTransaction();
-            ciudades = session.createQuery("from Ciudad").list();
+            ciudades = session.createQuery("from Ciudad as C ").list();
         } catch (RuntimeException e) {
             e.printStackTrace();
         } finally {
@@ -31,5 +37,46 @@ public class CiudadDAO {
             session.close();
         }
         return ciudades;
+    }*/
+	
+	public void listCiudades( ){
+	      Session session = HibernateUtil.getSessionFactory().openSession();
+	      Transaction tx = null;
+	      try{
+	         tx = session.beginTransaction();
+	         List ciudades = session.createQuery("FROM Ciudad").list(); 
+	         for (Iterator iterator = 
+	                           ciudades.iterator(); iterator.hasNext();){
+	            Ciudad ciudad = (Ciudad) iterator.next(); 
+	            Pais pais = ciudad.getPais();
+	            System.out.println("Ciudad: " + ciudad.getNombreCiudad());            
+	            System.out.println("\tPais: " +  pais.getNombrePais());
+	         }
+	         tx.commit();
+	      }catch (HibernateException e) {
+	         if (tx!=null) tx.rollback();
+	         e.printStackTrace(); 
+	      }finally {
+	         session.close(); 
+	      }
+	   }
+    
+    public Ciudad getCiudadById(int idCiudad) {
+        Ciudad ciudad = null;
+        Transaction trns = null;
+        Session session = HibernateUtil.getSessionFactory().openSession();
+        try {
+            trns = session.beginTransaction();
+            String queryString = "from Ciudad where id = :id";
+            Query query = session.createQuery(queryString);
+            query.setInteger("id", idCiudad);
+            ciudad = (Ciudad) query.uniqueResult();
+        } catch (RuntimeException e) {
+            e.printStackTrace();
+        } finally {
+            session.flush();
+            session.close();
+        }
+        return ciudad;
     }
 }

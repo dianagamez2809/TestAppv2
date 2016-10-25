@@ -35,6 +35,7 @@ and open the template in the editor.
 
         <!-- Mapping files -->
         <mapping resource="ciudad.hbm.xml" />
+         <mapping resource="pais.hbm.xml" />
 
     </session-factory>
 </hibernate-configuration>

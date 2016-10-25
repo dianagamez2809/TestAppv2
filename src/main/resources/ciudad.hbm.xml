@@ -14,14 +14,17 @@ and open the template in the editor.
     <class name="com.diana.model.Ciudad" table="CIUDAD">
         <id name="id" type="int" column="ID_CIUDAD">
         </id>
+        <many-to-one name="Pais" class="com.diana.model.Pais" fetch="select">
+            <column name="ID_PAIS" not-null="true" />
+        </many-to-one>
         <property name="nombreCiudad">
             <column name="NOMBRE_CIUDAD" />
         </property>
-        <property name="idPais">
+        <!-- <property name="idPais">
             <column name="ID_PAIS" />
-        </property>
+        </property> -->
         <property name="valorCiudad">
-            <column name="VALOR_CIUDAD" />
+            <column name="VALOR_CIUDAD" not-null="false" />
         </property>
     </class>
 </hibernate-mapping>

@@ -11,18 +11,30 @@ import java.io.Serializable;
  * @author diana
  */
 
-public class Ciudad{
+public class Ciudad implements Serializable{
 
-    private int id;
+    private Integer id;
     private String nombreCiudad;
-    private int idPais;
-    private int valorCiudad;
+    private Pais pais;
+    private Integer valorCiudad;
     
-    public int getId(){
+    public Ciudad() {
+	}
+
+	public Ciudad(Pais pais) {
+		this.pais = pais;
+	}
+
+	public Ciudad(Pais pais, String nombreCiudad) {
+		this.pais = pais;
+		this.nombreCiudad = nombreCiudad;
+	}
+    
+    public Integer getId(){
         return id;
     }
     
-    public void setId(int ID_CIUDAD){
+    public void setId(Integer ID_CIUDAD){
         this.id = ID_CIUDAD;
     }
     
@@ -34,27 +46,21 @@ public class Ciudad{
         this.nombreCiudad = nombreCiudad;
     }
     
-    public int getIdPais(){
-        return idPais;
+    public Pais getPais(){
+        return pais;
     }
     
-    public void setIdPais(int idPais){
-        this.idPais = idPais;
+    public void setPais(Pais pais){
+        this.pais = pais;
     }
     
-    public int getValorCiudad(){
+    public Integer getValorCiudad(){
         return valorCiudad;
     }
     
-    public void setValorCiudad(int valorCiudad){
+    public void setValorCiudad(Integer valorCiudad){
         this.valorCiudad = valorCiudad;
     }
     
-    @Override
-    public String toString(){
-        return "Ciudad [ID_CIUDAD=" + id + 
-                ", NOMBRE_CIUDAD =" + nombreCiudad +
-                ", ID_PAIS =" + idPais +
-                ", VALOR_CIUDAD =" + valorCiudad + "]";
-    }
+    
 }
