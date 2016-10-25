@@ -31,7 +31,7 @@ public class CiudadDAO {
 	      try{
 	         tx = session.beginTransaction();
 	         // Query from  table 'Ciudad'
-	         List ciudades = session.createQuery("FROM Ciudad").list(); 
+	         List ciudades = session.createQuery("FROM Ciudad Join Pais").list(); 
 	         for (Iterator iterator = 
 	                           ciudades.iterator(); iterator.hasNext();){
 	            Ciudad ciudad = (Ciudad) iterator.next(); 

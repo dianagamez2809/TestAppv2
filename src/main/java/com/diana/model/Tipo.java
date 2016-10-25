@@ -23,6 +23,15 @@ public class Tipo implements Serializable {
             this.id = id;
     }
     
+    // Getter and setter for Descripcion
+    public String getDescripcion(){
+        return descripcion;
+    }
+    
+    public void setDescripcion(String descripcion){
+        this.descripcion = descripcion;
+    }
+    
     // Getter and setter for Sedes, these methods are of Sede type
     public Set<Sede> getSedes(){
     	return this.sedes;
