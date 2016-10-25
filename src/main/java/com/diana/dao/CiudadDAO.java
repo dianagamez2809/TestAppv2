@@ -31,14 +31,18 @@ public class CiudadDAO {
 	      try{
 	         tx = session.beginTransaction();
 	         // Query from  table 'Ciudad'
-	         List ciudades = session.createQuery("FROM Ciudad Join Pais").list(); 
+	         List ciudades = session.createQuery("FROM Ciudad ").list(); 
 	         for (Iterator iterator = 
 	                           ciudades.iterator(); iterator.hasNext();){
 	            Ciudad ciudad = (Ciudad) iterator.next(); 
 	            // Get the name of the country for each city
 	            Pais pais = ciudad.getPais();
-	            System.out.println("Ciudad: " + ciudad.getNombreCiudad());            
-	            System.out.println("\tPais: " +  pais.getNombrePais());
+	            System.out.println("ID_PAIS: " + pais.getId());            
+	            System.out.println("\tPAIS: " +  pais.getNombrePais());
+	            System.out.println("ID_CIUDAD: " + ciudad.getId());            
+	            System.out.println("\tCIUDAD: " +  ciudad.getNombreCiudad());
+	            System.out.println("\tVALOR_CIUDAD: " +  ciudad.getValorCiudad());
+	            
 	         }
 	         tx.commit();
 	      }catch (HibernateException e) {

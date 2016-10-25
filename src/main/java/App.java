@@ -19,7 +19,7 @@ public class App {
 
         
         for (Ciudad iter : ciudaddao.getAllCiudades()) {
-            System.out.println(iter.getPais().getId());
+            System.out.println(iter.getPais().getNombrePais());
         }
         
         //ciudaddao.listCiudades();
