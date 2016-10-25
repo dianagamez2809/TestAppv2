@@ -23,31 +23,19 @@ import org.hibernate.Transaction;
  * @author diana
  */
 public class CiudadDAO {
-    /*public List<Ciudad> getAllCiudades() {
-        List<Ciudad> ciudades = new ArrayList<Ciudad>();
-        Transaction trns = null;
-        Session session = HibernateUtil.getSessionFactory().openSession();
-        try {
-            trns = session.beginTransaction();
-            ciudades = session.createQuery("from Ciudad as C ").list();
-        } catch (RuntimeException e) {
-            e.printStackTrace();
-        } finally {
-            session.flush();
-            session.close();
-        }
-        return ciudades;
-    }*/
-	
+	// Function to retrieve the list of cities and countries
 	public void listCiudades( ){
+			//Open a session of hibernate
 	      Session session = HibernateUtil.getSessionFactory().openSession();
 	      Transaction tx = null;
 	      try{
 	         tx = session.beginTransaction();
+	         // Query from the table 'Ciudad'
 	         List ciudades = session.createQuery("FROM Ciudad").list(); 
 	         for (Iterator iterator = 
 	                           ciudades.iterator(); iterator.hasNext();){
 	            Ciudad ciudad = (Ciudad) iterator.next(); 
+	            // Get the name of the country for each city
 	            Pais pais = ciudad.getPais();
 	            System.out.println("Ciudad: " + ciudad.getNombreCiudad());            
 	            System.out.println("\tPais: " +  pais.getNombrePais());
@@ -57,10 +45,14 @@ public class CiudadDAO {
 	         if (tx!=null) tx.rollback();
 	         e.printStackTrace(); 
 	      }finally {
+	    	 session.flush();
 	         session.close(); 
 	      }
 	   }
+	
+	
     
+	// Function to get a city according to the id provided.
     public Ciudad getCiudadById(int idCiudad) {
         Ciudad ciudad = null;
         Transaction trns = null;

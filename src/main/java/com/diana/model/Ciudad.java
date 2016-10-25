@@ -12,7 +12,8 @@ import java.io.Serializable;
  */
 
 public class Ciudad implements Serializable{
-
+	
+	// Define the fields in the data base, integer fields were defined as Integer because some of them are NULL
     private Integer id;
     private String nombreCiudad;
     private Pais pais;
@@ -21,6 +22,7 @@ public class Ciudad implements Serializable{
     public Ciudad() {
 	}
 
+    // Constructor for Ciudad
 	public Ciudad(Pais pais) {
 		this.pais = pais;
 	}
@@ -30,6 +32,7 @@ public class Ciudad implements Serializable{
 		this.nombreCiudad = nombreCiudad;
 	}
     
+	// Getter and setter for id, the name of the function should be the name of the variable defined at the beginning
     public Integer getId(){
         return id;
     }
@@ -38,6 +41,7 @@ public class Ciudad implements Serializable{
         this.id = ID_CIUDAD;
     }
     
+    // Getter and setter for NombreCiudad
     public String getNombreCiudad(){
         return nombreCiudad;
     }
@@ -46,6 +50,7 @@ public class Ciudad implements Serializable{
         this.nombreCiudad = nombreCiudad;
     }
     
+    // Getter and setter for Pais, these are functions of the type Pais
     public Pais getPais(){
         return pais;
     }
@@ -54,6 +59,7 @@ public class Ciudad implements Serializable{
         this.pais = pais;
     }
     
+    // Getter and setter for ValorCiudad, this can return a NULL value
     public Integer getValorCiudad(){
         return valorCiudad;
     }

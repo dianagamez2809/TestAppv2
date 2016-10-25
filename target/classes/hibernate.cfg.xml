@@ -4,6 +4,8 @@ To change this license header, choose License Headers in Project Properties.
 To change this template file, choose Tools | Templates
 and open the template in the editor.
 -->
+
+<!-- Hibernate configuration file -->
 <!DOCTYPE hibernate-configuration PUBLIC
  "-//Hibernate/Hibernate Configuration DTD 3.0//EN"
  "http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
@@ -11,6 +13,7 @@ and open the template in the editor.
     <session-factory>
         <!-- Database connection settings -->
         <property name="connection.driver_class">com.mysql.jdbc.Driver</property>
+        <!-- Information about the database and mysql credentials, this should be modified -->
         <property name="connection.url">jdbc:mysql://radius3:3306/juegosolimpicos</property>
         <property name="connection.username">root</property>
         <property name="connection.password"></property>

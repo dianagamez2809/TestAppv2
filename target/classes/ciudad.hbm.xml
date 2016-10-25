@@ -5,6 +5,10 @@ To change this template file, choose Tools | Templates
 and open the template in the editor.
 -->
 
+<!--  Hibernate mapping file, it maps the name of the variables defined in the model with the 
+fields in the data base. Relationships with other tables are also defined here, as well as the type
+and restrictions of each field. -->
+
 
 <!DOCTYPE hibernate-mapping PUBLIC 
 "-//Hibernate/Hibernate Mapping DTD 3.0//EN"

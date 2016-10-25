@@ -15,12 +15,15 @@ import java.util.Set;
  */
 public class Pais implements Serializable {
 	
+	// Define the fields in the data base, the SET variable is used to establish the one to many relationship
     private Integer id;
     private String nombrePais;
     private String codigoPais;
     private int valorPais;
 	private Set<Ciudad> ciudades = new HashSet<Ciudad>(0);
     
+	
+	// Constructor for Pais
 	public Pais() {
 	}
 
@@ -38,6 +41,7 @@ public class Pais implements Serializable {
 		this.ciudades = ciudades;
 	}
 	
+	// Getter and setter for id, the name of the function should be the name of the variable defined at the beginning
     public Integer getId() {
             return id;
     }
@@ -46,6 +50,7 @@ public class Pais implements Serializable {
             this.id = id;
     }
 
+    // Getter and setter for NombrePais
     public String getNombrePais() {
             return nombrePais;
     }
@@ -54,6 +59,7 @@ public class Pais implements Serializable {
             this.nombrePais = nombrePais;
     }
     
+    // Getter and setter for CodigoPais
     public String getCodigoPais() {
             return codigoPais;
     }
@@ -62,6 +68,7 @@ public class Pais implements Serializable {
             this.codigoPais = codigoPais;
     }
     
+    // Getter and setter for ValorPais
     public int getValorPais(){
         return valorPais;
     }
@@ -70,6 +77,7 @@ public class Pais implements Serializable {
         this.valorPais = valorPais;
     }
     
+    // Getter and setter for Ciudades, these methods are of Ciudad type
     public Set<Ciudad> getCiudades(){
     	return this.ciudades;
     }
