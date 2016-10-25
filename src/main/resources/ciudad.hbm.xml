@@ -30,5 +30,13 @@ and restrictions of each field. -->
         <property name="valorCiudad">
             <column name="VALOR_CIUDAD" not-null="false" />
         </property>
+        <!-- One to many relationship with CIUDAD table -->
+        <set name="sedes" table="SEDE_JJOO" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="SEDED" not-null="true" />
+            </key>
+            <!--  The name of the model to make the relation with is defined here -->
+            <one-to-many class="com.diana.model.Sede" />
+        </set>
     </class>
 </hibernate-mapping>

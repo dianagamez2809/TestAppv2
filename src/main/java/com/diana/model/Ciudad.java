@@ -5,6 +5,8 @@
  */
 package com.diana.model;
 import java.io.Serializable;
+import java.util.HashSet;
+import java.util.Set;
 
 /**
  *
@@ -18,6 +20,7 @@ public class Ciudad implements Serializable{
     private String nombreCiudad;
     private Pais pais;
     private Integer valorCiudad;
+    private Set<Sede> sedes = new HashSet<Sede>(0);
     
     public Ciudad() {
 	}
@@ -66,6 +69,15 @@ public class Ciudad implements Serializable{
     
     public void setValorCiudad(Integer valorCiudad){
         this.valorCiudad = valorCiudad;
+    }
+    
+    // Getter and setter for Sedes, these methods are of Sede type
+    public Set<Sede> getSedes(){
+    	return this.sedes;
+    }
+    
+    public void setSedes(Set<Sede> sedes){
+    	this.sedes = sedes;
     }
     
     

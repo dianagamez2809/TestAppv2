@@ -30,7 +30,7 @@ public class CiudadDAO {
 	      Transaction tx = null;
 	      try{
 	         tx = session.beginTransaction();
-	         // Query from the table 'Ciudad'
+	         // Query from  table 'Ciudad'
 	         List ciudades = session.createQuery("FROM Ciudad").list(); 
 	         for (Iterator iterator = 
 	                           ciudades.iterator(); iterator.hasNext();){
@@ -49,6 +49,22 @@ public class CiudadDAO {
 	         session.close(); 
 	      }
 	   }
+	
+	public List<Ciudad> getAllCiudades() {
+        List<Ciudad> ciudades = new ArrayList<Ciudad>();
+        Transaction trns = null;
+        Session session = HibernateUtil.getSessionFactory().openSession();
+        try {
+            trns = session.beginTransaction();
+            ciudades = session.createQuery("from Ciudad").list();
+        } catch (RuntimeException e) {
+            e.printStackTrace();
+        } finally {
+            session.flush();
+            session.close();
+        }
+        return ciudades;
+    }
 	
 	
     

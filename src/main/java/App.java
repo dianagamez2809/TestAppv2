@@ -18,13 +18,11 @@ public class App {
         CiudadDAO ciudaddao = new CiudadDAO();
 
         
-        /*for (Ciudad iter : ciudaddao.getAllCiudades()) {
-            System.out.println(iter);
-        }*/
+        for (Ciudad iter : ciudaddao.getAllCiudades()) {
+            System.out.println(iter.getPais().getId());
+        }
         
-        ciudaddao.listCiudades();
-        
-        System.out.println(ciudaddao.getCiudadById(1));
+        //ciudaddao.listCiudades();
 
         
     }

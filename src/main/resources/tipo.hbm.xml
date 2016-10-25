@@ -1,39 +1,23 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!--
-To change this license header, choose License Headers in Project Properties.
-To change this template file, choose Tools | Templates
-and open the template in the editor.
--->
 
 <!--  Hibernate mapping file, it maps the name of the variables defined in the model with the 
 fields in the data base. Relationships with other tables are also defined here, as well as the type
 and restrictions of each field. -->
 
-
 <!DOCTYPE hibernate-mapping PUBLIC 
 "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
 "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
-
 <hibernate-mapping>
-    <class name="com.diana.model.Ciudad" table="CIUDAD">
-        <id name="id" type="int" column="ID_CIUDAD">
+    <class name="com.diana.model.Tipo" table="TIPO_JJOO">
+         <id name="id" type="int" column="ID_TIPO_JJOO">
         </id>
-        <many-to-one name="Pais" class="com.diana.model.Pais" fetch="select">
-            <column name="ID_PAIS" not-null="true" />
-        </many-to-one>
-        <property name="nombreCiudad">
-            <column name="NOMBRE_CIUDAD" />
-        </property>
-        <!-- <property name="idPais">
-            <column name="ID_PAIS" />
-        </property> -->
-        <property name="valorCiudad">
-            <column name="VALOR_CIUDAD" not-null="false" />
+        <property name="descripcion" type="string">
+            <column name="DESCRIPCION_TIPO" length="32" not-null="true" />
         </property>
         <!-- One to many relationship with CIUDAD table -->
         <set name="sedes" table="SEDE_JJOO" inverse="true" lazy="true" fetch="select">
             <key>
-                <column name="SEDED" not-null="true" />
+                <column name="ID_TIPO_JJOO" not-null="true" />
             </key>
             <!--  The name of the model to make the relation with is defined here -->
             <one-to-many class="com.diana.model.Sede" />
