@@ -12,13 +12,13 @@ and restrictions of each field. -->
          <id name="id" type="int" column="ID_PAIS">
         </id>
         <property name="nombrePais" type="string">
-            <column name="NOMBRE_PAIS" length="64" not-null="true" />
+            <column name="NOMBRE_PAIS" not-null="true" />
         </property>
         <property name="codigoPais" type="string">
-            <column name="CODIGO_PAIS" length="2" not-null="true"/>
+            <column name="CODIGO_PAIS" not-null="true"/>
         </property>
         <property name="valorPais" type="int">
-            <column name="VALOR_PAIS" length="11" not-null="true"/>
+            <column name="VALOR_PAIS" not-null="true"/>
         </property>
         <!-- One to many relationship with CIUDAD table -->
         <set name="ciudades" table="CIUDAD" inverse="true" lazy="true" fetch="select">

@@ -8,6 +8,10 @@ package com.diana.dao;
 import com.diana.model.Ciudad;
 import com.diana.model.Pais;
 import com.diana.util.HibernateUtil;
+import com.mysql.cj.jdbc.PreparedStatement;
+
+import java.sql.Connection;
+import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
@@ -23,25 +27,30 @@ import org.hibernate.Transaction;
  * @author diana
  */
 public class CiudadDAO {
+	
 	// Function to retrieve the list of cities and countries
-	public void listCiudades( ){
+	public List listCiudades( ){
 			//Open a session of hibernate
 	      Session session = HibernateUtil.getSessionFactory().openSession();
 	      Transaction tx = null;
+	      List ciudades = null;
 	      try{
 	         tx = session.beginTransaction();
 	         // Query from  table 'Ciudad'
-	         List ciudades = session.createQuery("FROM Ciudad ").list(); 
+	         ciudades = session.createQuery("select c.id FROM Ciudad as c left join c.sedes").list();
+	         //ciudades = session.createQuery("select p.id as id, p.nombrePais as pais FROM Pais as p join p.ciudades c left join c.sedes ").list();
 	         for (Iterator iterator = 
 	                           ciudades.iterator(); iterator.hasNext();){
-	            Ciudad ciudad = (Ciudad) iterator.next(); 
+	            Object ciudad = (Object) iterator.next(); 
 	            // Get the name of the country for each city
-	            Pais pais = ciudad.getPais();
-	            System.out.println("ID_PAIS: " + pais.getId());            
-	            System.out.println("\tPAIS: " +  pais.getNombrePais());
-	            System.out.println("ID_CIUDAD: " + ciudad.getId());            
-	            System.out.println("\tCIUDAD: " +  ciudad.getNombreCiudad());
-	            System.out.println("\tVALOR_CIUDAD: " +  ciudad.getValorCiudad());
+	            //Pais pais = ciudad.getPais();
+	            //Sede sede = ciudad
+	            //Tipo tipo = tipo.
+	            //System.out.println("ID_PAIS: " + (ciudad.toString());            
+	            //System.out.println("\tPAIS: " +  pais.getNombrePais());
+	            //System.out.println("ID_CIUDAD: " + ciudad.getId());            
+	            //System.out.println("\tCIUDAD: " +  ciudad.getNombreCiudad());
+	            //System.out.println("\tVALOR_CIUDAD: " +  ciudad.getValorCiudad());
 	            
 	         }
 	         tx.commit();
@@ -49,9 +58,10 @@ public class CiudadDAO {
 	         if (tx!=null) tx.rollback();
 	         e.printStackTrace(); 
 	      }finally {
-	    	 session.flush();
+	    	 //session.flush();
 	         session.close(); 
 	      }
+	      return ciudades;
 	   }
 	
 	public List<Ciudad> getAllCiudades() {
@@ -60,7 +70,7 @@ public class CiudadDAO {
         Session session = HibernateUtil.getSessionFactory().openSession();
         try {
             trns = session.beginTransaction();
-            ciudades = session.createQuery("from Ciudad").list();
+            ciudades = session.createQuery("select c.id from Ciudad as c join c.sedes").list();
         } catch (RuntimeException e) {
             e.printStackTrace();
         } finally {
