@@ -8,6 +8,7 @@ package com.diana.dao;
 import com.diana.model.Ciudad;
 import com.diana.model.Pais;
 import com.diana.model.Sede;
+import com.diana.model.Tipo;
 import com.diana.util.HibernateUtil;
 import com.mysql.cj.jdbc.PreparedStatement;
 
@@ -47,8 +48,14 @@ public class CiudadDAO {
 	            Pais pais = ciudad.getPais();
 	            pais.getNombrePais();
 	            pais.getValorPais();
-	            Set<Sede> sede = ciudad.getSedes();
-	            sede.size();
+	            Set<Sede> sedes = ciudad.getSedes();
+	            sedes.size();
+	            for (Iterator itersede = 
+	                    sedes.iterator(); itersede.hasNext();){
+		            Sede sede = (Sede) itersede.next();
+		            Tipo tipo = sede.getTipo();
+		            tipo.getDescripcion();
+	            }
 	            
 	            
 	         }
