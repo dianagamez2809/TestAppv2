@@ -38,7 +38,7 @@ public class App {
 
 	static int pageNum = 0;
     public static void main(String[] args) {
-        CiudadDAO ciudaddao = new CiudadDAO();
+        
         SedeDAO sededao = new SedeDAO();
         Display display = new Display ();
 		Shell shell = new Shell(display);
@@ -72,70 +72,20 @@ public class App {
 	    
 	    final Composite page0 = new Composite(contentPanel, SWT.NONE);
 	    page0.setLayout(new RowLayout());
-	    Table table = new Table(page0,  SWT.Resize | SWT.V_SCROLL
-	            | SWT.H_SCROLL);
-        table.setHeaderVisible(true);
-        String[] titlesciudades = { "ID_PAIS", "PAIS", "ID_CIUDAD", "CIUDAD", "VALOR", "NUMERO_SEDE", "DESCRIPCION" };
-
-        for (int loopIndex = 0; loopIndex < titlesciudades.length; loopIndex++) {
-          TableColumn column = new TableColumn(table, SWT.NULL);
-          column.setText(titlesciudades[loopIndex]);
-        }
-		
-		for (Ciudad ciudad : ciudaddao.listCiudades()) {
-		    TableItem item = new TableItem(table, SWT.NULL);
-		    item.setText(0, ciudad.getPais().getId().toString());
-		    item.setText(1, ciudad.getPais().getNombrePais());
-		    item.setText(2, ciudad.getId().toString());
-		    item.setText(3, ciudad.getNombreCiudad());
-			if(ciudad.getValorCiudad() == null){
-				item.setText(4, ciudad.getPais().getValorPais().toString());
-			}
-			else{
-				item.setText(4, ciudad.getValorCiudad().toString());
-			}
-			System.out.println("NUMERO_SEDE " + ciudad.getSedes().size());
-			item.setText(5, Integer.toString(ciudad.getSedes().size()));
-			for (Iterator iterator = 
-                   ciudad.getSedes().iterator(); iterator.hasNext();){
-				Sede sede = (Sede) iterator.next();
-				item.setText(6, sede.getTipo().getDescripcion());
-			}   
-		}
-		
-		for (int loopIndex = 0; loopIndex < titlesciudades.length; loopIndex++) {
-	      table.getColumn(loopIndex).pack();
-	    }
-
-	    table.setBounds(25, 25, 500, 260);
+	    new CiudadPantalla(page0);
 	    
 	    
 	    
 	    // List of sedes
 	    final Composite page1 = new Composite(contentPanel, SWT.NONE);
-	    page1.setLayout(new RowLayout());
-	    Table tablesedes = new Table(page1,  SWT.Resize | SWT.V_SCROLL
-	            | SWT.H_SCROLL);
-	    tablesedes.setHeaderVisible(true);
-        String[] titlessedes = { "AÑO", "CIUDAD", "TIPO", "VER", "EDITAR", "BORRAR"};
-
-        for (int loopIndex = 0; loopIndex < titlessedes.length; loopIndex++) {
-          TableColumn column = new TableColumn(tablesedes, SWT.NULL);
-          column.setText(titlessedes[loopIndex]);
-        }
-		
-		for (Sede sede : sededao.getSedes()) {
-		    TableItem item = new TableItem(tablesedes, SWT.NULL);
-		    item.setText(0, sede.getAno().toString());
-		    item.setText(1, sede.getCiudad().getNombreCiudad());
-		    item.setText(2, sede.getTipo().getDescripcion()); 
-		}
-		
-		for (int loopIndex = 0; loopIndex < titlessedes.length; loopIndex++) {
-			tablesedes.getColumn(loopIndex).pack();
-	    }
-
-		tablesedes.setBounds(25, 25, 350, 150);
+	    RowLayout rowLayout1 = new RowLayout();
+	    page1.setLayout(rowLayout1);
+	    rowLayout1.type = SWT.VERTICAL;
+		Button buttoncrear = new Button(page1, SWT.PUSH);
+		buttoncrear.setText("Crear");
+		buttoncrear.setLayoutData(new RowData(250, 40));
+		new SedePantalla(page1);
+	    
 	    
 	    
 		// Initialise layout
