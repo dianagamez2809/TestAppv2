@@ -14,7 +14,7 @@ and open the template in the editor.
         <!-- Database connection settings -->
         <property name="connection.driver_class">com.mysql.jdbc.Driver</property>
         <!-- Information about the database and mysql credentials, this should be modified -->
-        <property name="connection.url">jdbc:mysql://radius3:3306/juegosolimpicos</property>
+        <property name="connection.url">jdbc:mysql://localhost:3306/juegosolimpicos</property>
         <property name="connection.username">root</property>
         <property name="connection.password"></property>
 

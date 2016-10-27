@@ -84,7 +84,7 @@ public class App {
 		buttoncrear.setText("Crear");
 		buttoncrear.setLayoutData(new RowData(250, 40));
 		new SedePantalla(page1);
-	    
+		
 	    
 	    
 		// Initialise layout
@@ -103,6 +103,12 @@ public class App {
 	          }
 	          contentPanel.layout();
 	        }
+	    });
+	    
+	    buttoncrear.addListener(SWT.Selection, new Listener(){
+	    	public void handleEvent(Event event) {
+	    		new Crear(shell);
+	    	}
 	    });
 	    
 	    

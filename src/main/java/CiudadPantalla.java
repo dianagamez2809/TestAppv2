@@ -35,7 +35,6 @@ public class CiudadPantalla {
 			else{
 				item.setText(4, ciudad.getValorCiudad().toString());
 			}
-			System.out.println("NUMERO_SEDE " + ciudad.getSedes().size());
 			item.setText(5, Integer.toString(ciudad.getSedes().size()));
 			for (Iterator iterator = 
                    ciudad.getSedes().iterator(); iterator.hasNext();){
