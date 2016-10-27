@@ -87,7 +87,7 @@ public class App {
 		RowLayout rowLayout2 = new RowLayout();
 	    page1.setLayout(rowLayout2);
 	    rowLayout2.type = SWT.VERTICAL;
-		new SedePantalla(page1);
+		new SedePantalla(page1, shell);
 		
 	    
 	    

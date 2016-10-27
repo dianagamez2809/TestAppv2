@@ -7,8 +7,11 @@ import org.eclipse.swt.widgets.Event;
 import org.eclipse.swt.widgets.Listener;
 import org.eclipse.swt.widgets.Shell;
 
+import com.diana.dao.SedeDAO;
+
 public class Ver {
-	public Ver(Shell parent, int id) {
+	public Ver(Shell parent, int id, int sede) {
+		SedeDAO sededao = new SedeDAO();
 	    Shell child = new Shell(parent);
 	    child.setSize(500, 300);
 	    child.setText("Sede");
@@ -18,6 +21,8 @@ public class Ver {
 	    RowLayout rowLayout1 = new RowLayout();
 	    child.setLayout(rowLayout1);
 	    	    
+	    // Display information
+	    System.out.println(sededao.getSede(id, sede).getAno());
 	    
 	    // Button to close screen
 		Button buttoncancel = new Button(child, SWT.PUSH);

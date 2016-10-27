@@ -48,37 +48,28 @@ public class SedeDAO {
    }
 	
 	// Function to get a sede according to the id provided.
-    public Sede getSede(int idSede) {
-    	Sede sitio = null;
+    public Sede getSede(int idSede, int sedes) {
+    	Sede sede = null;
         Transaction trns = null;
         Session session = HibernateUtil.getSessionFactory().openSession();
         try {
             trns = session.beginTransaction();
-            String queryString = "from Sede where id = :id";
+            String queryString = "from Sede where id = :idSede and sede = :sedes";
             Query query = session.createQuery(queryString);
-            query.setInteger("id", idSede);
-            sitio = (Sede) query.uniqueResult();
+            query.setInteger("idSede", idSede);
+            query.setInteger("sedes", sedes);
+            System.out.println(sedes);
+            sede = (Sede) query.uniqueResult();
         } catch (RuntimeException e) {
             e.printStackTrace();
         } finally {
             session.flush();
             session.close();
         }
-        return sitio;
+        return sede;
     }
     
-    public List<Sede> getAll() {
-    	   
-    	  // Retrieve session from Hibernate
-    	  Session session = HibernateUtil.getSessionFactory().getCurrentSession();
-    	   
-    	  // Create a Hibernate query (HQL)
-    	  Query query = session.createQuery("FROM  Sede");
-    	   
-    	  // Retrieve all
-    	  return  query.list();
-    	 }
-    
+   
     // Function to create a sede
     
     
