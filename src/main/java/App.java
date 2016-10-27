@@ -80,9 +80,13 @@ public class App {
 	    RowLayout rowLayout1 = new RowLayout();
 	    page1.setLayout(rowLayout1);
 	    rowLayout1.type = SWT.VERTICAL;
+	    rowLayout1.marginLeft = 10;
 		Button buttoncrear = new Button(page1, SWT.PUSH);
 		buttoncrear.setText("Crear");
 		buttoncrear.setLayoutData(new RowData(250, 40));
+		RowLayout rowLayout2 = new RowLayout();
+	    page1.setLayout(rowLayout2);
+	    rowLayout2.type = SWT.VERTICAL;
 		new SedePantalla(page1);
 		
 	    
