@@ -83,7 +83,7 @@ public class SedeDAO {
             }
             e.printStackTrace();
         } finally {
-            session.flush();
+            //session.flush();
             session.close();
         }
     }

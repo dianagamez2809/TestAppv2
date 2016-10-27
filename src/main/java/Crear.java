@@ -15,12 +15,18 @@ import org.eclipse.swt.widgets.TableColumn;
 import org.eclipse.swt.widgets.TableItem;
 
 import com.diana.dao.CiudadDAO;
+import com.diana.dao.SedeDAO;
+import com.diana.dao.TipoDAO;
 import com.diana.model.Ciudad;
 import com.diana.model.Sede;
+import com.diana.model.Tipo;
 
 
 public class Crear {
 	public Crear(Shell parent) {
+		SedeDAO sededao = new SedeDAO();
+		CiudadDAO ciudaddao = new CiudadDAO();
+		TipoDAO tipodao = new TipoDAO();
 	    Shell child = new Shell(parent);
 	    child.setSize(500, 300);
 	    child.setText("Crear nueva Sede");
@@ -35,7 +41,19 @@ public class Crear {
 	    buttonsave.setText("Guardar");
 	    buttonsave.setLayoutData(new RowData(240, 40));
 	    // Function to save new record
-	    
+	    buttonsave.addListener(SWT.Selection, new Listener() {
+	        @Override
+	        public void handleEvent(Event event) {
+			    Sede sede = new Sede();
+		        sede.setAno(2017);
+		        
+		        Tipo tipo = tipodao.getTipo(1);
+		        Ciudad ciudad = ciudaddao.getCiudad(2);
+		        sede.setTipo(tipo);
+		        sede.setCiudad(ciudad);
+		        sededao.createSede(sede);
+	        }
+	    });
 	    
 	    // Button to close screen
 		Button buttoncancel = new Button(child, SWT.PUSH);
