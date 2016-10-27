@@ -19,7 +19,7 @@ public class Pais implements Serializable {
     private Integer id;
     private String nombrePais;
     private String codigoPais;
-    private int valorPais;
+    private Integer valorPais;
 	private Set<Ciudad> ciudades = new HashSet<Ciudad>(0);
     
 	
@@ -27,13 +27,13 @@ public class Pais implements Serializable {
 	public Pais() {
 	}
 
-	public Pais(String nombrePais, String codigoPais, int valorPais) {
+	public Pais(String nombrePais, String codigoPais, Integer valorPais) {
 		this.nombrePais = nombrePais;
 		this.codigoPais = codigoPais;
 		this.valorPais = valorPais;
 	}
 
-	public Pais(String nombrePais, String codigoPais, int valorPais,
+	public Pais(String nombrePais, String codigoPais, Integer valorPais,
 			Set<Ciudad> ciudades) {
 		this.nombrePais = nombrePais;
 		this.codigoPais = codigoPais;
@@ -69,11 +69,11 @@ public class Pais implements Serializable {
     }
     
     // Getter and setter for ValorPais
-    public int getValorPais(){
+    public Integer getValorPais(){
         return valorPais;
     }
     
-    public void setValorPais(int valorPais){
+    public void setValorPais(Integer valorPais){
         this.valorPais = valorPais;
     }
     
