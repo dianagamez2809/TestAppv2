@@ -117,7 +117,7 @@ public class App {
 	    Table tablesedes = new Table(page1,  SWT.Resize | SWT.V_SCROLL
 	            | SWT.H_SCROLL);
 	    tablesedes.setHeaderVisible(true);
-        String[] titlessedes = { "ANO", "CIUDAD", "TIPO", "VER", "EDITAR", "BORRAR"};
+        String[] titlessedes = { "AÑO", "CIUDAD", "TIPO", "VER", "EDITAR", "BORRAR"};
 
         for (int loopIndex = 0; loopIndex < titlessedes.length; loopIndex++) {
           TableColumn column = new TableColumn(tablesedes, SWT.NULL);
@@ -135,7 +135,7 @@ public class App {
 			tablesedes.getColumn(loopIndex).pack();
 	    }
 
-		tablesedes.setBounds(25, 25, 500, 260);
+		tablesedes.setBounds(25, 25, 350, 150);
 	    
 	    
 		// Initialise layout
