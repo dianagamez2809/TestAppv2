@@ -35,6 +35,13 @@ public class App {
 			System.out.println("NOMBRE_PAIS" + ciudad.getPais().getNombrePais());
 			System.out.println("ID_CIUDAD" + ciudad.getId());
 			System.out.println("NOMBRE_CIUDAD" + ciudad.getNombreCiudad());
+			if(ciudad.getValorCiudad() == null){
+				System.out.println("VALOR P" + ciudad.getPais().getValorPais());
+			}
+			else{
+				System.out.println("VALOR" + ciudad.getValorCiudad());
+			}
+			System.out.println("NUMERO_SEDE" + ciudad.getSedes().size());
         }
 		
 		//helloWorldTest.pack();

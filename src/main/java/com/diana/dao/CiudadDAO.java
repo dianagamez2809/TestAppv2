@@ -7,6 +7,7 @@ package com.diana.dao;
 
 import com.diana.model.Ciudad;
 import com.diana.model.Pais;
+import com.diana.model.Sede;
 import com.diana.util.HibernateUtil;
 import com.mysql.cj.jdbc.PreparedStatement;
 
@@ -15,6 +16,7 @@ import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
+import java.util.Set;
 
 import org.hibernate.HibernateException;
 import org.hibernate.Query;
@@ -44,6 +46,10 @@ public class CiudadDAO {
 	            Ciudad ciudad = (Ciudad) iterator.next(); 
 	            Pais pais = ciudad.getPais();
 	            pais.getNombrePais();
+	            pais.getValorPais();
+	            Set<Sede> sede = ciudad.getSedes();
+	            sede.size();
+	            
 	            
 	         }
 	         tx.commit();
@@ -55,6 +61,8 @@ public class CiudadDAO {
 	         session.close(); 
 	      }
 	      return ciudades;
-	   }
+	  }
+	
+	
 
 }
