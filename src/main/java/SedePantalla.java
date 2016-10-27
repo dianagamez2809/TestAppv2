@@ -17,10 +17,14 @@ import com.diana.dao.SedeDAO;
 import com.diana.model.Sede;
 
 public class SedePantalla {
-	public SedePantalla (Composite shell, Shell parent){
+	public SedePantalla (Shell parent){
+		Shell child = new Shell(parent);
+	    child.setSize(500, 350);
+	    child.setText("Crear nueva Sede");
+	    child.setLayout(new GridLayout(2, false));
 		int i = 0;
 		SedeDAO sededao = new SedeDAO();
-		Table tablesedes = new Table(shell,  SWT.Resize | SWT.V_SCROLL
+		Table tablesedes = new Table(child,  SWT.Resize | SWT.V_SCROLL
 	            | SWT.H_SCROLL);
 	    tablesedes.setHeaderVisible(true);
         String[] titlessedes = { "AÑO   ", "CIUDAD       ", "TIPO        ",  "EDITAR   ", "BORRAR  "};
@@ -84,6 +88,7 @@ public class SedePantalla {
 		        public void handleEvent(Event event) {
 		        	sededao.deleteSede(sede.getAno(), sede.getCiudad().getId());
 		        	//layout.topControl = shell;
+		        	child.dispose();
 		        }
 			});
 			
@@ -96,7 +101,16 @@ public class SedePantalla {
 
 		tablesedes.setBounds(25, 25, 500, 300);
 		
+		Button buttoncrear = new Button(child, SWT.PUSH);
+		buttoncrear.setText("Crear Sede");
+		//buttoncrear.setLayoutData(new RowData(200, 40));
 		
-		
+		buttoncrear.addListener(SWT.Selection, new Listener(){
+	    	public void handleEvent(Event event) {
+	    		new Crear(parent);
+	    		child.dispose();
+	    	}
+	    });
+		child.open();
 	}
 }

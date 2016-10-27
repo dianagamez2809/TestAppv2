@@ -1,7 +1,9 @@
 import java.util.Iterator;
 
 import org.eclipse.swt.SWT;
+import org.eclipse.swt.layout.GridLayout;
 import org.eclipse.swt.widgets.Composite;
+import org.eclipse.swt.widgets.Shell;
 import org.eclipse.swt.widgets.Table;
 import org.eclipse.swt.widgets.TableColumn;
 import org.eclipse.swt.widgets.TableItem;
@@ -11,9 +13,13 @@ import com.diana.model.Ciudad;
 import com.diana.model.Sede;
 
 public class CiudadPantalla {
-	public CiudadPantalla(Composite shell){
+	public CiudadPantalla(Shell parent){
+		Shell child = new Shell(parent);
+	    child.setSize(580, 380);
+	    child.setText("Crear nueva Sede");
+	    child.setLayout(new GridLayout(2, false));
 		CiudadDAO ciudaddao = new CiudadDAO();
-		Table table = new Table(shell,  SWT.Resize | SWT.V_SCROLL
+		Table table = new Table(child,  SWT.Resize | SWT.V_SCROLL
 	            | SWT.H_SCROLL);
         table.setHeaderVisible(true);
         String[] titlesciudades = { "ID_PAIS", "PAIS", "ID_CIUDAD", "CIUDAD", "VALOR", "NUMERO_SEDE", "DESCRIPCION" };
@@ -48,5 +54,6 @@ public class CiudadPantalla {
 	    }
 
 	    table.setBounds(25, 25, 500, 260);
+	    child.open();
 	}
 }

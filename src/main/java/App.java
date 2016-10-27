@@ -56,8 +56,12 @@ public class App {
 	    shell.setLayout(rowLayout);
 	    rowLayout.type = SWT.VERTICAL;
 		Button buttonciudades = new Button(shell, SWT.PUSH);
-		buttonciudades.setText("Sedes");
+		buttonciudades.setText("Ciudades");
 		buttonciudades.setLayoutData(new RowData(550, 40));
+		
+		Button buttonsedes = new Button(shell, SWT.PUSH);
+		buttonsedes.setText("Sedes");
+		buttonsedes.setLayoutData(new RowData(550, 40));
 	    
 	    
 	    
@@ -69,53 +73,38 @@ public class App {
 	    contentPanel.setLayout(layout);
 
 	    
-	    final Composite page0 = new Composite(contentPanel, SWT.NONE);
+	    /*final Composite page0 = new Composite(contentPanel, SWT.NONE);
 	    page0.setLayout(new RowLayout());
-	    //contentPanel.getParent().layout();
-	    new CiudadPantalla(page0);
+	    contentPanel.getParent().layout();
+	    new CiudadPantalla(page0);*/
 	    
 	    
 	    
 	    // List of sedes
-	    final Composite page1 = new Composite(contentPanel, SWT.NONE);
+	    /*final Composite page1 = new Composite(contentPanel, SWT.NONE);
 	    RowLayout rowLayout1 = new RowLayout();
-	    page1.setLayout(rowLayout1);
+	    page1.setLayout(rowLayout1);*/
 	    //contentPanel.getParent().layout();
-	    new SedePantalla(page1, shell);
+	    /*new SedePantalla(page1, shell);
 		Button buttoncrear = new Button(page1, SWT.PUSH);
 		buttoncrear.setText("Crear Sede");
-		buttoncrear.setLayoutData(new RowData(200, 40));
+		buttoncrear.setLayoutData(new RowData(200, 40));*/
 	    
 	    
 	    
 		// Initialise layout
-		layout.topControl = page0;
+		//layout.topControl = page0;
 	    
 	    buttonciudades.addListener(SWT.Selection, new Listener() {
 	        public void handleEvent(Event event) {
-	          pageNum = ++pageNum % 2;
-	          if(pageNum == 0) {
-	        	  layout.topControl = page0;
-	        	  buttonciudades.setText("Lista de Sedes");
-	        	  //new CiudadPantalla(page0);
-	        	  
-	          }
-	          else{
-	        	  layout.topControl = page1;
-	        	  //contentPanel.getParent().layout();
-	        	  //new SedePantalla(page1, shell);
-	        	  //page1.layout();
-	        	  //new SedePantalla(page1, shell);
-	        	  buttonciudades.setText("Lista de Ciudades");
-	          }
-	          contentPanel.layout();
-	        }
+	        	new CiudadPantalla(shell);
+	        }         
 	    });
 	    
-	    buttoncrear.addListener(SWT.Selection, new Listener(){
-	    	public void handleEvent(Event event) {
-	    		new Crear(shell);
-	    	}
+	    buttonsedes.addListener(SWT.Selection, new Listener() {
+	        public void handleEvent(Event event) {
+	        	new SedePantalla(shell);
+	        }
 	    });
 	    
 	    
