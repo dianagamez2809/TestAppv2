@@ -29,28 +29,21 @@ import org.hibernate.Transaction;
 public class CiudadDAO {
 	
 	// Function to retrieve the list of cities and countries
-	public List listCiudades( ){
+	public List<Ciudad> listCiudades( ){
 			//Open a session of hibernate
 	      Session session = HibernateUtil.getSessionFactory().openSession();
 	      Transaction tx = null;
-	      List ciudades = null;
+	      List<Ciudad> ciudades = null;
 	      try{
 	         tx = session.beginTransaction();
 	         // Query from  table 'Ciudad'
-	         ciudades = session.createQuery("select c.id FROM Ciudad as c left join c.sedes").list();
+	         ciudades = session.createQuery("FROM Ciudad ").list();
 	         //ciudades = session.createQuery("select p.id as id, p.nombrePais as pais FROM Pais as p join p.ciudades c left join c.sedes ").list();
 	         for (Iterator iterator = 
 	                           ciudades.iterator(); iterator.hasNext();){
-	            Object ciudad = (Object) iterator.next(); 
-	            // Get the name of the country for each city
-	            //Pais pais = ciudad.getPais();
-	            //Sede sede = ciudad
-	            //Tipo tipo = tipo.
-	            //System.out.println("ID_PAIS: " + (ciudad.toString());            
-	            //System.out.println("\tPAIS: " +  pais.getNombrePais());
-	            //System.out.println("ID_CIUDAD: " + ciudad.getId());            
-	            //System.out.println("\tCIUDAD: " +  ciudad.getNombreCiudad());
-	            //System.out.println("\tVALOR_CIUDAD: " +  ciudad.getValorCiudad());
+	            Ciudad ciudad = (Ciudad) iterator.next(); 
+	            Pais pais = ciudad.getPais();
+	            pais.getNombrePais();
 	            
 	         }
 	         tx.commit();
@@ -63,42 +56,5 @@ public class CiudadDAO {
 	      }
 	      return ciudades;
 	   }
-	
-	public List<Ciudad> getAllCiudades() {
-        List<Ciudad> ciudades = new ArrayList<Ciudad>();
-        Transaction trns = null;
-        Session session = HibernateUtil.getSessionFactory().openSession();
-        try {
-            trns = session.beginTransaction();
-            ciudades = session.createQuery("select c.id from Ciudad as c join c.sedes").list();
-        } catch (RuntimeException e) {
-            e.printStackTrace();
-        } finally {
-            session.flush();
-            session.close();
-        }
-        return ciudades;
-    }
-	
-	
-    
-	// Function to get a city according to the id provided.
-    public Ciudad getCiudadById(int idCiudad) {
-        Ciudad ciudad = null;
-        Transaction trns = null;
-        Session session = HibernateUtil.getSessionFactory().openSession();
-        try {
-            trns = session.beginTransaction();
-            String queryString = "from Ciudad where id = :id";
-            Query query = session.createQuery(queryString);
-            query.setInteger("id", idCiudad);
-            ciudad = (Ciudad) query.uniqueResult();
-        } catch (RuntimeException e) {
-            e.printStackTrace();
-        } finally {
-            session.flush();
-            session.close();
-        }
-        return ciudad;
-    }
+
 }
