@@ -14,16 +14,19 @@ import com.diana.model.Ciudad;
 import com.diana.model.Sede;
 import com.diana.model.Tipo;
 
+
 import java.sql.SQLException;
 import java.util.Iterator;
 import java.util.List;
 import org.eclipse.swt.SWT;
+import org.eclipse.swt.layout.GridLayout;
 import org.eclipse.swt.widgets.Display;
 import org.eclipse.swt.widgets.Shell;
 import org.eclipse.swt.widgets.Text;
 import org.eclipse.swt.widgets.Table;
 import org.eclipse.swt.widgets.TableColumn;
 import org.eclipse.swt.widgets.TableItem;
+import org.eclipse.swt.widgets.Button;
 
 public class App {
 
@@ -32,10 +35,16 @@ public class App {
         Display display = new Display ();
 		Shell shell = new Shell(display);
 		shell.setText("Resultados");
-		shell.setBounds(50, 50, 500, 500);
-	    final Text text = new Text(shell, SWT.BORDER);
+		shell.setSize(550, 600);
 	    
-	    Table table = new Table(shell,  SWT.BORDER | SWT.V_SCROLL
+	    GridLayout gridLayout = new GridLayout();
+	    gridLayout.numColumns = 2;
+	    shell.setLayout(gridLayout);
+	    new Button(shell, SWT.PUSH).setText("Ciudades");
+	    new Button(shell, SWT.PUSH).setText("Lista de sedes");
+	    
+	    
+	    Table table = new Table(shell,  SWT.Resize | SWT.V_SCROLL
 	            | SWT.H_SCROLL);
         table.setHeaderVisible(true);
         String[] titles = { "ID_PAIS", "PAIS", "ID_CIUDAD", "CIUDAD", "VALOR", "NUMERO_SEDE", "DESCRIPCION" };
@@ -92,7 +101,9 @@ public class App {
 	      table.getColumn(loopIndex).pack();
 	    }
 
-	    table.setBounds(25, 25, 500, 500);
+	    table.setBounds(25, 25, 500, 260);
+	    
+	    
 		
 		shell.pack();
 		shell.open ();
