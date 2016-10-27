@@ -65,7 +65,7 @@ public class SedePantalla {
 			
 			buttonver.addListener(SWT.Selection, new Listener() {
 		        public void handleEvent(Event event) {
-		        	new Editar(parent, sede.getAno(), sede.getCiudad().getId());
+		        	new Editar(parent, sede.getAno(), sede.getTipo().getId());
 		        }
 			});
 			
@@ -80,7 +80,7 @@ public class SedePantalla {
 			
 			buttonborrar.addListener(SWT.Selection, new Listener() {
 		        public void handleEvent(Event event) {
-		        	//new (parent, sede.getAno(), sede.getCiudad().getId());
+		        	sededao.deleteSede(sede.getAno(), sede.getCiudad().getId());
 		        }
 			});
 			

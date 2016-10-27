@@ -48,17 +48,16 @@ public class SedeDAO {
    }
 	
 	// Function to get a sede according to the id provided.
-    public Sede getSede(int idSede, int sedes) {
+    public Sede getSede(int idSede, int tipo) {
     	Sede sede = null;
         Transaction trns = null;
         Session session = HibernateUtil.getSessionFactory().openSession();
         try {
             trns = session.beginTransaction();
-            String queryString = "from Sede where id = :idSede and sede = :sedes";
+            String queryString = "from Sede where id = :idSede and tipo = :tipo";
             Query query = session.createQuery(queryString);
             query.setInteger("idSede", idSede);
-            query.setInteger("sedes", sedes);
-            System.out.println(sedes);
+            query.setInteger("tipo", tipo);
             sede = (Sede) query.uniqueResult();
         } catch (RuntimeException e) {
             e.printStackTrace();
@@ -77,4 +76,22 @@ public class SedeDAO {
     
     
     // Function to delete a sede
+    public void deleteSede(int idSede, int tipo) {
+        Transaction trns = null;
+        Session session = HibernateUtil.getSessionFactory().openSession();
+        try {
+            trns = session.beginTransaction();
+            Sede sede = (Sede) session.load(Sede.class, new Integer(idSede));
+            session.delete(sede);
+            session.getTransaction().commit();
+        } catch (RuntimeException e) {
+            if (trns != null) {
+                trns.rollback();
+            }
+            e.printStackTrace();
+        } finally {
+            //session.flush();
+            session.close();
+        }
+    }
 }
