@@ -39,7 +39,6 @@ public class App {
 	static int pageNum = 0;
     public static void main(String[] args) {
         
-        SedeDAO sededao = new SedeDAO();
         Display display = new Display ();
 		Shell shell = new Shell(display);
 		shell.setText("Resultados");
