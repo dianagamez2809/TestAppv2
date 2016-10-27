@@ -7,6 +7,9 @@ import org.eclipse.swt.widgets.Event;
 import org.eclipse.swt.widgets.Listener;
 import org.eclipse.swt.widgets.Shell;
 
+import com.diana.dao.SedeDAO;
+import com.diana.model.Sede;
+
 public class Editar {
 	public Editar(Shell parent, int id, int sede) {
 	    Shell child = new Shell(parent);
@@ -23,7 +26,15 @@ public class Editar {
 	    buttonsave.setText("Editar");
 	    buttonsave.setLayoutData(new RowData(240, 40));
 	    // Function to save edited record
-	    
+	    buttonsave.addListener(SWT.Selection, new Listener(){
+	    	public void handleEvent(Event event){
+	    		Sede sede = new Sede();
+	            sede.setAno(2017);
+	            sede.setTipo(2);
+	            sede.setCiudad(1);
+	            sededao.addSede(sede);
+	    	}
+	    });
 	    
 	    // Button to close screen
 		Button buttoncancel = new Button(child, SWT.PUSH);

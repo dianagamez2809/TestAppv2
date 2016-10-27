@@ -70,7 +70,23 @@ public class SedeDAO {
     
    
     // Function to create a sede
-    
+    public void createSede(Sede sede) {
+        Transaction trns = null;
+        Session session = HibernateUtil.getSessionFactory().openSession();
+        try {
+            trns = session.beginTransaction();
+            session.save(sede);
+            session.getTransaction().commit();
+        } catch (RuntimeException e) {
+            if (trns != null) {
+                trns.rollback();
+            }
+            e.printStackTrace();
+        } finally {
+            session.flush();
+            session.close();
+        }
+    }
     
     // Function to update a sede
     

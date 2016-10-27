@@ -81,6 +81,7 @@ public class SedePantalla {
 			buttonborrar.addListener(SWT.Selection, new Listener() {
 		        public void handleEvent(Event event) {
 		        	sededao.deleteSede(sede.getAno(), sede.getCiudad().getId());
+		        	//layout.topControl = shell;
 		        }
 			});
 			

@@ -70,6 +70,26 @@ public class CiudadDAO {
 	      return ciudades;
 	  }
 	
+	// Function to get a ciudad according to the id provided.
+    public Ciudad getCiudad(int idCiudad) {
+    	Ciudad ciudad = null;
+        Transaction trns = null;
+        Session session = HibernateUtil.getSessionFactory().openSession();
+        try {
+            trns = session.beginTransaction();
+            String queryString = "from Ciudad where id = :idCiudad";
+            Query query = session.createQuery(queryString);
+            query.setInteger("idCiudad", idCiudad);
+            ciudad = (Ciudad) query.uniqueResult();
+        } catch (RuntimeException e) {
+            e.printStackTrace();
+        } finally {
+            session.flush();
+            session.close();
+        }
+        return ciudad;
+    }
+	
 	
 
 }
