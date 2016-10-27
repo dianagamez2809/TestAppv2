@@ -54,10 +54,10 @@ public class SedeDAO {
         Session session = HibernateUtil.getSessionFactory().openSession();
         try {
             trns = session.beginTransaction();
-            String queryString = "from Sede where id = :idSede and tipo = :tipo";
+            String queryString = "from Sede where id = :idSede ";
             Query query = session.createQuery(queryString);
             query.setInteger("idSede", idSede);
-            query.setInteger("tipo", tipo);
+            //query.setInteger("tipo", tipo);
             sede = (Sede) query.uniqueResult();
         } catch (RuntimeException e) {
             e.printStackTrace();

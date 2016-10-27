@@ -54,6 +54,8 @@ public class SedePantalla {
             editor.grabHorizontal = true;
             editor.setEditor(tipo, items[i], 2);
             //editor.minimumWidth = 100;
+            
+            
 		    // Edit
             editor = new TableEditor(tablesedes);
 			Button buttonver = new Button(tablesedes, SWT.PUSH);
