@@ -15,6 +15,7 @@ import com.diana.dao.CiudadDAO;
 import com.diana.dao.SedeDAO;
 import com.diana.dao.TipoDAO;
 import com.diana.model.Ciudad;
+import com.diana.model.Sede;
 import com.diana.model.Tipo;
 
 public class Editar {
@@ -22,6 +23,10 @@ public class Editar {
 		SedeDAO sededao = new SedeDAO();
 		CiudadDAO ciudaddao = new CiudadDAO();
 		TipoDAO tipodao = new TipoDAO();
+		
+		Sede s = sededao.getSede(id, idtipo);
+		
+		System.out.println(s);
 	    Shell child = new Shell(parent);
 	    child.setSize(400, 200);
 	    child.setText("Crear nueva Sede");
@@ -31,6 +36,7 @@ public class Editar {
 	    anoLabel.setText("Ano:");
 		
 		Text ano = new Text(child, SWT.BORDER);
+		ano.setText(sededao.getSede(id, idtipo).getAno().toString());
 		GridData gridData = new GridData();
 		gridData.horizontalAlignment = SWT.FILL;
 		gridData.grabExcessHorizontalSpace = true;
@@ -70,6 +76,13 @@ public class Editar {
 	    buttonsave.addListener(SWT.Selection, new Listener(){
 	    	public void handleEvent(Event event){
 	    		
+	    		s.setAno(Integer.parseInt(ano.getText()));
+	    		Tipo tipo = tipodao.getTipo(t.getSelectionIndex());
+		        Ciudad ciudad = ciudaddao.getCiudad(c.getSelectionIndex());
+		        s.setTipo(tipo);
+		        s.setCiudad(ciudad);
+		        sededao.updateSede(s);
+		        child.dispose();
 	    	}
 	    });
 	    

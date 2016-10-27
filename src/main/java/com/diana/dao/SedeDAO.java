@@ -89,7 +89,23 @@ public class SedeDAO {
     }
     
     // Function to update a sede
-    
+    public void updateSede(Sede sede) {
+        Transaction trns = null;
+        Session session = HibernateUtil.getSessionFactory().openSession();
+        try {
+            trns = session.beginTransaction();
+            session.update(sede);
+            session.getTransaction().commit();
+        } catch (RuntimeException e) {
+            if (trns != null) {
+                trns.rollback();
+            }
+            e.printStackTrace();
+        } finally {
+            //session.flush();
+            session.close();
+        }
+    }
     
     // Function to delete a sede
     public void deleteSede(int idSede, int tipo) {
