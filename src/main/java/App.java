@@ -71,6 +71,7 @@ public class App {
 	    
 	    final Composite page0 = new Composite(contentPanel, SWT.NONE);
 	    page0.setLayout(new RowLayout());
+	    //contentPanel.getParent().layout();
 	    new CiudadPantalla(page0);
 	    
 	    
@@ -79,7 +80,8 @@ public class App {
 	    final Composite page1 = new Composite(contentPanel, SWT.NONE);
 	    RowLayout rowLayout1 = new RowLayout();
 	    page1.setLayout(rowLayout1);
-		new SedePantalla(page1, shell);
+	    //contentPanel.getParent().layout();
+	    new SedePantalla(page1, shell);
 		Button buttoncrear = new Button(page1, SWT.PUSH);
 		buttoncrear.setText("Crear Sede");
 		buttoncrear.setLayoutData(new RowData(200, 40));
@@ -95,9 +97,15 @@ public class App {
 	          if(pageNum == 0) {
 	        	  layout.topControl = page0;
 	        	  buttonciudades.setText("Lista de Sedes");
+	        	  //new CiudadPantalla(page0);
+	        	  
 	          }
 	          else{
 	        	  layout.topControl = page1;
+	        	  //contentPanel.getParent().layout();
+	        	  //new SedePantalla(page1, shell);
+	        	  //page1.layout();
+	        	  //new SedePantalla(page1, shell);
 	        	  buttonciudades.setText("Lista de Ciudades");
 	          }
 	          contentPanel.layout();
