@@ -8,7 +8,7 @@ import org.eclipse.swt.widgets.Listener;
 import org.eclipse.swt.widgets.Shell;
 
 public class Editar {
-	public Editar(Shell parent) {
+	public Editar(Shell parent, int id, int sede) {
 	    Shell child = new Shell(parent);
 	    child.setSize(500, 300);
 	    child.setText("Editar Sede");
