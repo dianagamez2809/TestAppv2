@@ -16,6 +16,8 @@
         <mysql.version>6.0.4</mysql.version>
         <!-- Define SWT version -->
         <swt.version>3.6.1</swt.version>
+        <!--  Define JUnit version -->
+        <junit.version>4.12</junit.version>
     </properties>
     
     <dependencies>
@@ -31,7 +33,13 @@
             <artifactId>mysql-connector-java</artifactId>
             <version>${mysql.version}</version>
         </dependency> 
-
+		<!--  JUnit library -->
+		<dependency>
+		    <groupId>junit</groupId>
+		    <artifactId>junit</artifactId>
+		    <version>${junit.version}</version>
+		</dependency>
+		
 
 
     </dependencies>

@@ -32,15 +32,17 @@ public class Editar {
 	    child.setText("Crear nueva Sede");
 	    child.setLayout(new GridLayout(2, false));
 	    
+	    
 	    Label anoLabel = new Label(child, SWT.NONE);
 	    anoLabel.setText("Ano:");
 		
 		Text ano = new Text(child, SWT.BORDER);
-		ano.setText(sededao.getSede(id, idtipo).getAno().toString());
+		ano.setText(sededao.getSede(id, idtipo).getId().toString());
 		GridData gridData = new GridData();
 		gridData.horizontalAlignment = SWT.FILL;
 		gridData.grabExcessHorizontalSpace = true;
 		ano.setLayoutData(gridData);
+		ano.setEditable(false);
 	    
 	    Label cLabel = new Label(child, SWT.NONE);
 		cLabel.setText("Ciudad:");
@@ -76,7 +78,8 @@ public class Editar {
 	    buttonsave.addListener(SWT.Selection, new Listener(){
 	    	public void handleEvent(Event event){
 	    		
-	    		s.setAno(Integer.parseInt(ano.getText()));
+	    		//s.setAno(Integer.parseInt(ano.getText()));
+	    		//s.setId(1990);
 	    		Tipo tipo = tipodao.getTipo(t.getSelectionIndex());
 		        Ciudad ciudad = ciudaddao.getCiudad(c.getSelectionIndex());
 		        s.setTipo(tipo);

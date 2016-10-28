@@ -42,7 +42,7 @@ public class SedePantalla {
         for (Sede sede : sededao.getSedes()) {
         	TableEditor editor = new TableEditor(tablesedes);
         	Text ano = new Text(tablesedes, SWT.NONE);
-        	ano.setText(sede.getAno().toString());
+        	ano.setText(sede.getId().toString());
             editor.grabHorizontal = true;
             editor.setEditor(ano, items[i], 0);
             // Ciudad
@@ -71,7 +71,7 @@ public class SedePantalla {
 			
 			buttonver.addListener(SWT.Selection, new Listener() {
 		        public void handleEvent(Event event) {
-		        	new Editar(parent, sede.getAno(), sede.getTipo().getId());
+		        	new Editar(parent, sede.getId(), sede.getTipo().getId());
 		        }
 			});
 			
@@ -86,7 +86,7 @@ public class SedePantalla {
 			
 			buttonborrar.addListener(SWT.Selection, new Listener() {
 		        public void handleEvent(Event event) {
-		        	sededao.deleteSede(sede.getAno(), sede.getCiudad().getId());
+		        	sededao.deleteSede(sede.getId(), sede.getCiudad().getId());
 		        	//layout.topControl = shell;
 		        	child.dispose();
 		        }

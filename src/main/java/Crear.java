@@ -87,7 +87,7 @@ public class Crear {
 	        @Override
 	        public void handleEvent(Event event) {
 			    Sede sede = new Sede();
-		        sede.setAno(Integer.parseInt(ano.getText()));
+		        sede.setId(Integer.parseInt(ano.getText()));
 		        
 		        Tipo tipo = tipodao.getTipo(t.getSelectionIndex());
 		        Ciudad ciudad = ciudaddao.getCiudad(c.getSelectionIndex());

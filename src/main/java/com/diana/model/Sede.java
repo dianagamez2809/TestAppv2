@@ -9,17 +9,17 @@ import java.io.Serializable;
 
 public class Sede implements Serializable {
 	// Define the fields in the data base and the ones used to establish the relationship
-    private Integer ano;
+    private Integer id;
     private Tipo tipo;
     private Ciudad ciudad;
     
     // Getter and setter for ano, the name of the function should be the name of the variable defined at the beginning
-    public Integer getAno(){
-        return ano;
+    public Integer getId(){
+        return id;
     }
     
-    public void setAno(Integer ano){
-        this.ano = ano;
+    public void setId(Integer id){
+        this.id = id;
     }
     
     // Getter and setter for tipo, these are functions of the type Tipo

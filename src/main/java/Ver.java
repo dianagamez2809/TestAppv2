@@ -22,7 +22,7 @@ public class Ver {
 	    child.setLayout(rowLayout1);
 	    	    
 	    // Display information
-	    System.out.println(sededao.getSede(id, sede).getAno());
+	    System.out.println(sededao.getSede(id, sede).getId());
 	    
 	    // Button to close screen
 		Button buttoncancel = new Button(child, SWT.PUSH);

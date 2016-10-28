@@ -11,7 +11,8 @@ and restrictions of each field. -->
 
 <hibernate-mapping>
     <class name="com.diana.model.Sede" table="SEDE_JJOO">
-        <id name="ano" type="int" column="AÑO">
+        <id name="id" type="int" column="AÑO">
+        	 <generator class="identity"></generator>
         </id>
         <many-to-one name="Tipo" class="com.diana.model.Tipo" fetch="select">
             <column name="ID_TIPO_JJOO" not-null="true" />
